@@ -1,6 +1,6 @@
 # gestionale-tennistavolo
 
-Progetto di apprendimento di Michael (junior developer) per costruire un portfolio: gestionale per una società di tennistavolo (atleti, sessioni, prenotazioni).
+Progetto di apprendimento di Michael per costruire un portfolio: gestionale per una società di tennistavolo (atleti, sessioni, prenotazioni).
 
 ## Stack
 Java 25, Spring Boot (Maven), Spring Data JPA, MySQL 8.4, API REST, frontend HTML/CSS/JS con fetch.
