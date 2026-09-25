@@ -33,3 +33,4 @@ build/
 .vscode/
 src/main/resources/application-local.properties
 CLAUDE.local.md
+ROADMAP.md
