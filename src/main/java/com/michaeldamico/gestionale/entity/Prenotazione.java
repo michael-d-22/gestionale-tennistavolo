@@ -38,11 +38,33 @@ public class Prenotazione {
     public Prenotazione(Atleta atleta, Sessione sessione) {
         this.atleta = atleta;
         this.sessione = sessione;
-        this.stato = StatoPrenotazione.PRENOTATA;
+        this.stato = statoIniziale(sessione);
     }
 
     public Long getId() { return id; }
     public Atleta getAtleta() { return atleta; }
     public Sessione getSessione() { return sessione; }
     public StatoPrenotazione getStato() { return stato; }
+
+    public void annulla() {
+        this.stato = StatoPrenotazione.ANNULLATA;
+    }
+
+    public void riattiva() {
+        this.stato = statoIniziale(sessione);
+    }
+
+    public void segnaPresente() {
+        this.stato = StatoPrenotazione.PRESENTE;
+    }
+
+    public void segnaAssente() {
+        this.stato = StatoPrenotazione.ASSENTE;
+    }
+
+    private static StatoPrenotazione statoIniziale(Sessione sessione) {
+        return sessione.getTipo() == TipoSessione.INDIVIDUALE
+                ? StatoPrenotazione.PRESENTE
+                : StatoPrenotazione.PRENOTATA;
+    }
 }

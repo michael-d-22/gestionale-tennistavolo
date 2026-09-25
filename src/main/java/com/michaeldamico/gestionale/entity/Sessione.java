@@ -1,6 +1,7 @@
 package com.michaeldamico.gestionale.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import jakarta.persistence.Column;
@@ -60,4 +61,8 @@ public class Sessione {
     public Categoria getCategoria() { return categoria; }
     public Integer getCapienza() { return capienza; }
     public Allenatore getAllenatore() { return allenatore; }
+
+    public LocalDateTime getInizio() {
+        return LocalDateTime.of(data, ora);
+    }
 }
