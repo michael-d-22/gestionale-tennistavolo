@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -35,5 +36,11 @@ public class GestoreErrori {
             errori.add(errore.getField() + ": " + errore.getDefaultMessage());
         }
         return new ErroreResponse(400, String.join(", ", errori));
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroreResponse jsonNonLeggibile(HttpMessageNotReadableException e) {
+        return new ErroreResponse(400, "Il corpo della richiesta non è un JSON valido o contiene valori non ammessi");
     }
 }
