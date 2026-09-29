@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.michaeldamico.gestionale.dto.PresenzeAtletaResponse;
+import com.michaeldamico.gestionale.entity.Categoria;
 import com.michaeldamico.gestionale.entity.Prenotazione;
 import com.michaeldamico.gestionale.entity.StatoPrenotazione;
 
@@ -29,4 +30,14 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long
             ORDER BY a.cognome, a.nome
             """)
     List<PresenzeAtletaResponse> contaPresenzePerAtleta(StatoPrenotazione stato, LocalDate inizio, LocalDate fine);
+
+    @Query("""
+            SELECT COUNT(p) FROM Prenotazione p
+            WHERE p.atleta.id = :atletaId
+              AND p.stato = :stato
+              AND p.sessione.categoria = :categoria
+              AND p.sessione.data BETWEEN :inizio AND :fine
+            """)
+    long contaPresenzeAtletaInCategoria(Long atletaId, StatoPrenotazione stato, Categoria categoria,
+                                        LocalDate inizio, LocalDate fine);
 }

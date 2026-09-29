@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.michaeldamico.gestionale.dto.PercentualeAtletaResponse;
 import com.michaeldamico.gestionale.dto.PresenzeAtletaResponse;
 import com.michaeldamico.gestionale.dto.RiepilogoMeseResponse;
 import com.michaeldamico.gestionale.service.ReportService;
@@ -30,5 +31,10 @@ public class ReportController {
     @GetMapping("/riepilogo")
     public RiepilogoMeseResponse riepilogo(@RequestParam YearMonth mese) {
         return reportService.riepilogo(mese);
+    }
+
+    @GetMapping("/percentuale-atleta")
+    public PercentualeAtletaResponse percentualeAtleta(@RequestParam Long atletaId, @RequestParam YearMonth mese) {
+        return reportService.percentualeAtleta(atletaId, mese);
     }
 }
