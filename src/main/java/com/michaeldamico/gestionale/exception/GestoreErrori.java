@@ -1,6 +1,11 @@
 package com.michaeldamico.gestionale.exception;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -20,5 +25,15 @@ public class GestoreErrori {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErroreResponse regolaViolata(RegolaViolataException e) {
         return new ErroreResponse(409, e.getMessage());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroreResponse datiNonValidi(MethodArgumentNotValidException e) {
+        List<String> errori = new ArrayList<>();
+        for (FieldError errore : e.getBindingResult().getFieldErrors()) {
+            errori.add(errore.getField() + ": " + errore.getDefaultMessage());
+        }
+        return new ErroreResponse(400, String.join(", ", errori));
     }
 }

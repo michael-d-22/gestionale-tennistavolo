@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 import com.michaeldamico.gestionale.dto.PrenotazioneResponse;
 import com.michaeldamico.gestionale.dto.SessioneRequest;
 import com.michaeldamico.gestionale.dto.SessioneResponse;
@@ -48,7 +50,7 @@ public class SessioneController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public SessioneResponse crea(@RequestBody SessioneRequest request) {
+    public SessioneResponse crea(@Valid @RequestBody SessioneRequest request) {
         return SessioneResponse.da(sessioneService.crea(request));
     }
 

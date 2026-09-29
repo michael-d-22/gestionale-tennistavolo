@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 import com.michaeldamico.gestionale.dto.AtletaRequest;
 import com.michaeldamico.gestionale.dto.AtletaResponse;
 import com.michaeldamico.gestionale.entity.Atleta;
@@ -43,7 +45,7 @@ public class AtletaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AtletaResponse crea(@RequestBody AtletaRequest request) {
+    public AtletaResponse crea(@Valid @RequestBody AtletaRequest request) {
         return AtletaResponse.da(atletaService.crea(request));
     }
 }

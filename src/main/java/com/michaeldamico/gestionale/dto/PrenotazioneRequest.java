@@ -1,4 +1,6 @@
 package com.michaeldamico.gestionale.dto;
 
-public record PrenotazioneRequest(Long atletaId, Long sessioneId) {
+import jakarta.validation.constraints.NotNull;
+
+public record PrenotazioneRequest(@NotNull Long atletaId, @NotNull Long sessioneId) {
 }

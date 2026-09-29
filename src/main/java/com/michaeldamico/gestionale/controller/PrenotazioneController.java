@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 import com.michaeldamico.gestionale.dto.PrenotazioneRequest;
 import com.michaeldamico.gestionale.dto.PrenotazioneResponse;
 import com.michaeldamico.gestionale.service.PrenotazioneService;
@@ -24,7 +26,7 @@ public class PrenotazioneController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PrenotazioneResponse prenota(@RequestBody PrenotazioneRequest request) {
+    public PrenotazioneResponse prenota(@Valid @RequestBody PrenotazioneRequest request) {
         return PrenotazioneResponse.da(prenotazioneService.prenota(request.atletaId(), request.sessioneId()));
     }
 
