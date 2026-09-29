@@ -19,6 +19,8 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long
 
     long countBySessioneIdAndStatoNot(Long sessioneId, StatoPrenotazione stato);
 
+    long countByStatoAndSessioneDataBetween(StatoPrenotazione stato, LocalDate inizio, LocalDate fine);
+
     @Query("""
             SELECT new com.michaeldamico.gestionale.dto.PresenzeAtletaResponse(a.id, a.nome, a.cognome, COUNT(p))
             FROM Prenotazione p JOIN p.atleta a JOIN p.sessione s
