@@ -1,5 +1,6 @@
 package com.michaeldamico.gestionale.service;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,13 +24,16 @@ public class PrenotazioneService {
     private final PrenotazioneRepository prenotazioneRepository;
     private final AtletaRepository atletaRepository;
     private final SessioneRepository sessioneRepository;
+    private final Clock clock;
 
     public PrenotazioneService(PrenotazioneRepository prenotazioneRepository,
                                AtletaRepository atletaRepository,
-                               SessioneRepository sessioneRepository) {
+                               SessioneRepository sessioneRepository,
+                               Clock clock) {
         this.prenotazioneRepository = prenotazioneRepository;
         this.atletaRepository = atletaRepository;
         this.sessioneRepository = sessioneRepository;
+        this.clock = clock;
     }
 
     @Transactional
@@ -122,6 +126,6 @@ public class PrenotazioneService {
     }
 
     private boolean isIniziata(Sessione sessione) {
-        return !sessione.getInizio().isAfter(LocalDateTime.now());
+        return !sessione.getInizio().isAfter(LocalDateTime.now(clock));
     }
 }
