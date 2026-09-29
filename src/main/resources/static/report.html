@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Report mensile</title>
+    <link rel="stylesheet" href="css/stile.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="atleti.html">Atleti</a>
+        <a href="sessioni.html">Sessioni</a>
+        <a href="prenotazioni.html">Prenotazioni</a>
+        <a href="report.html">Report</a>
+    </nav>
+
+    <h1>Report mensile</h1>
+    <div id="messaggio"></div>
+
+    <label>Mese <input type="month" id="scelta-mese"></label>
+    <button id="pulsante-calcola">Calcola</button>
+
+    <h2>Riepilogo</h2>
+    <table>
+        <tbody id="tabella-riepilogo"></tbody>
+    </table>
+
+    <h2>Presenze per atleta</h2>
+    <table>
+        <thead>
+            <tr><th>Cognome</th><th>Nome</th><th>Presenze</th></tr>
+        </thead>
+        <tbody id="tabella-presenze"></tbody>
+    </table>
+
+    <h2>Percentuale di presenza di un atleta</h2>
+    <label>Atleta <select id="scelta-atleta"></select></label>
+    <button id="pulsante-percentuale">Calcola percentuale</button>
+    <p id="risultato-percentuale"></p>
+
+    <script src="js/api.js"></script>
+    <script src="js/report.js"></script>
+</body>
+</html>

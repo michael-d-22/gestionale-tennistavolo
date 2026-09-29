@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atleti</title>
+    <link rel="stylesheet" href="css/stile.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="atleti.html">Atleti</a>
+        <a href="sessioni.html">Sessioni</a>
+        <a href="prenotazioni.html">Prenotazioni</a>
+        <a href="report.html">Report</a>
+    </nav>
+
+    <h1>Atleti</h1>
+    <div id="messaggio"></div>
+
+    <h2>Nuovo atleta</h2>
+    <form id="form-atleta">
+        <label>Nome <input name="nome" required></label>
+        <label>Cognome <input name="cognome" required></label>
+        <label>Categoria
+            <select name="categoria">
+                <option value="AGONISTI">AGONISTI</option>
+                <option value="GIOVANILE">GIOVANILE</option>
+                <option value="AMATORI">AMATORI</option>
+            </select>
+        </label>
+        <button type="submit">Aggiungi</button>
+    </form>
+
+    <h2>Elenco</h2>
+    <table>
+        <thead>
+            <tr><th>Id</th><th>Cognome</th><th>Nome</th><th>Categoria</th></tr>
+        </thead>
+        <tbody id="tabella-atleti"></tbody>
+    </table>
+
+    <script src="js/api.js"></script>
+    <script src="js/atleti.js"></script>
+</body>
+</html>

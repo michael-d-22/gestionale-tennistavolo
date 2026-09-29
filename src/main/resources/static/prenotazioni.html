@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prenotazioni</title>
+    <link rel="stylesheet" href="css/stile.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="atleti.html">Atleti</a>
+        <a href="sessioni.html">Sessioni</a>
+        <a href="prenotazioni.html">Prenotazioni</a>
+        <a href="report.html">Report</a>
+    </nav>
+
+    <h1>Prenotazioni e presenze</h1>
+    <div id="messaggio"></div>
+
+    <label>Sessione <select id="scelta-sessione"></select></label>
+
+    <h2>Prenota un atleta</h2>
+    <form id="form-prenotazione">
+        <label>Atleta <select id="scelta-atleta"></select></label>
+        <button type="submit">Prenota</button>
+    </form>
+
+    <h2>Prenotati alla sessione</h2>
+    <table>
+        <thead>
+            <tr><th>Id</th><th>Atleta</th><th>Stato</th><th>Azioni</th></tr>
+        </thead>
+        <tbody id="tabella-prenotazioni"></tbody>
+    </table>
+
+    <script src="js/api.js"></script>
+    <script src="js/prenotazioni.js"></script>
+</body>
+</html>

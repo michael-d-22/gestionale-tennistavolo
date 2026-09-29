@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sessioni</title>
+    <link rel="stylesheet" href="css/stile.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="atleti.html">Atleti</a>
+        <a href="sessioni.html">Sessioni</a>
+        <a href="prenotazioni.html">Prenotazioni</a>
+        <a href="report.html">Report</a>
+    </nav>
+
+    <h1>Sessioni</h1>
+    <div id="messaggio"></div>
+
+    <h2>Nuova sessione</h2>
+    <form id="form-sessione">
+        <label>Data <input type="date" name="data" required></label>
+        <label>Ora <input type="time" name="ora" required></label>
+        <label>Tipo
+            <select name="tipo">
+                <option value="GRUPPO">GRUPPO</option>
+                <option value="INDIVIDUALE">INDIVIDUALE</option>
+            </select>
+        </label>
+        <label>Categoria
+            <select name="categoria">
+                <option value="">(nessuna)</option>
+                <option value="AGONISTI">AGONISTI</option>
+                <option value="GIOVANILE">GIOVANILE</option>
+                <option value="AMATORI">AMATORI</option>
+            </select>
+        </label>
+        <label>Capienza <input type="number" name="capienza" min="1"></label>
+        <button type="submit">Crea</button>
+    </form>
+    <p><small>Per le sessioni INDIVIDUALE categoria e capienza vengono ignorate (capienza sempre 1).</small></p>
+
+    <h2>Elenco</h2>
+    <table>
+        <thead>
+            <tr><th>Id</th><th>Data</th><th>Ora</th><th>Tipo</th><th>Categoria</th><th>Capienza</th></tr>
+        </thead>
+        <tbody id="tabella-sessioni"></tbody>
+    </table>
+
+    <script src="js/api.js"></script>
+    <script src="js/sessioni.js"></script>
+</body>
+</html>

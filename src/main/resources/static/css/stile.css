@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+nav a {
+    margin-right: 16px;
+}
+
+form label {
+    display: inline-block;
+    margin: 4px 12px 4px 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 8px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+td button {
+    margin-right: 4px;
+}
+
+#messaggio {
+    padding: 8px;
+    margin: 8px 0;
+}
+
+#messaggio:empty {
+    display: none;
+}
+
+.successo {
+    background: #dff0d8;
+    color: #2d6a2d;
+}
+
+.errore {
+    background: #f2dede;
+    color: #a94442;
+}
