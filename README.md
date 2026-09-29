@@ -94,6 +94,15 @@ Codici di risposta: `201` creazione, `400` dati non validi, `404` risorsa inesis
 
 Le tabelle vengono create automaticamente da Hibernate al primo avvio. L'interfaccia web è su `http://localhost:8080`, le API sotto `http://localhost:8080/api`.
 
+## Come l'ho sviluppato
+Ho sviluppato il progetto utilizzando anche Claude Code (assistente AI) come collega:
+parte del codice è stata scritta dall'assistente su mia indicazione,
+un passo alla volta. Le decisioni sul dominio e sulle regole di business
+(categorie, prenotazioni individuali, riattivazione dopo l'annullamento,
+report mensili) vengono dalla mia esperienza di allenatore. Ho verificato
+ogni passo avviando l'app, provando le API e rileggendo il codice, e ho
+corretto più volte le proposte dell'assistente.
+
 ## Limiti noti e possibili sviluppi
 - **Nessuna autenticazione**: chiunque acceda può segnare le presenze. Il passo successivo sarebbe Spring Security con i ruoli allenatore e atleta.
 - **Concorrenza**: due prenotazioni simultanee sull'ultimo posto potrebbero superare la capienza (il controllo "conta e poi inserisci" non è atomico). Per il volume di una società il rischio è accettabile; la soluzione sarebbe un lock sulla sessione.
