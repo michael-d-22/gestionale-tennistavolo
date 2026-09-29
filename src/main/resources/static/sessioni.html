@@ -10,6 +10,7 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="atleti.html">Atleti</a>
+        <a href="allenatori.html">Allenatori</a>
         <a href="sessioni.html">Sessioni</a>
         <a href="prenotazioni.html">Prenotazioni</a>
         <a href="report.html">Report</a>
@@ -37,6 +38,11 @@
             </select>
         </label>
         <label>Capienza <input type="number" name="capienza" min="1"></label>
+        <label>Allenatore
+            <select name="allenatore">
+                <option value="">(nessuno)</option>
+            </select>
+        </label>
         <button type="submit">Crea</button>
     </form>
     <p><small>Per le sessioni INDIVIDUALE categoria e capienza vengono ignorate (capienza sempre 1).</small></p>
@@ -44,7 +50,7 @@
     <h2>Elenco</h2>
     <table>
         <thead>
-            <tr><th>Id</th><th>Data</th><th>Ora</th><th>Tipo</th><th>Categoria</th><th>Capienza</th></tr>
+            <tr><th>Id</th><th>Data</th><th>Ora</th><th>Tipo</th><th>Categoria</th><th>Capienza</th><th>Allenatore</th></tr>
         </thead>
         <tbody id="tabella-sessioni"></tbody>
     </table>

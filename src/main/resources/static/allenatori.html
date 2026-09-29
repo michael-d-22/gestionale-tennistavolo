@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Prenotazioni</title>
+    <title>Allenatori</title>
     <link rel="stylesheet" href="css/stile.css">
 </head>
 <body>
@@ -16,26 +16,25 @@
         <a href="report.html">Report</a>
     </nav>
 
-    <h1>Prenotazioni e presenze</h1>
+    <h1>Allenatori</h1>
     <div id="messaggio"></div>
 
-    <label>Sessione <select id="scelta-sessione"></select></label>
-
-    <h2>Prenota un atleta</h2>
-    <form id="form-prenotazione">
-        <label>Atleta <select id="scelta-atleta"></select></label>
-        <button type="submit">Prenota</button>
+    <h2>Nuovo allenatore</h2>
+    <form id="form-allenatore">
+        <label>Nome <input name="nome" required></label>
+        <label>Cognome <input name="cognome" required></label>
+        <button type="submit">Aggiungi</button>
     </form>
 
-    <h2>Prenotati alla sessione</h2>
+    <h2>Elenco</h2>
     <table>
         <thead>
-            <tr><th>Id</th><th>Atleta</th><th>Stato</th><th>Azioni</th></tr>
+            <tr><th>Id</th><th>Cognome</th><th>Nome</th></tr>
         </thead>
-        <tbody id="tabella-prenotazioni"></tbody>
+        <tbody id="tabella-allenatori"></tbody>
     </table>
 
     <script src="js/api.js"></script>
-    <script src="js/prenotazioni.js"></script>
+    <script src="js/allenatori.js"></script>
 </body>
 </html>
