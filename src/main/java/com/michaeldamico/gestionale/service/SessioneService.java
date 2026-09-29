@@ -1,5 +1,7 @@
 package com.michaeldamico.gestionale.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,5 +52,14 @@ public class SessioneService {
 
         return sessioneRepository.save(new Sessione(request.data(), request.ora(), request.tipo(),
                 categoria, capienza, allenatore));
+    }
+
+    public List<Sessione> trovaTutte() {
+        return sessioneRepository.findAll();
+    }
+
+    public Sessione trova(Long id) {
+        return sessioneRepository.findById(id)
+                .orElseThrow(() -> new RisorsaNonTrovataException("Sessione " + id + " non trovata"));
     }
 }

@@ -1,6 +1,7 @@
 package com.michaeldamico.gestionale.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -93,6 +94,13 @@ public class PrenotazioneService {
         Prenotazione prenotazione = trovaPrenotazioneRegistrabile(prenotazioneId);
         prenotazione.segnaAssente();
         return prenotazioneRepository.save(prenotazione);
+    }
+
+    public List<Prenotazione> trovaPerSessione(Long sessioneId) {
+        if (!sessioneRepository.existsById(sessioneId)) {
+            throw new RisorsaNonTrovataException("Sessione " + sessioneId + " non trovata");
+        }
+        return prenotazioneRepository.findBySessioneId(sessioneId);
     }
 
     private Prenotazione trovaPrenotazione(Long prenotazioneId) {
