@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import com.michaeldamico.gestionale.dto.ErroreResponse;
 
@@ -42,5 +44,17 @@ public class GestoreErrori {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErroreResponse jsonNonLeggibile(HttpMessageNotReadableException e) {
         return new ErroreResponse(400, "Il corpo della richiesta non è un JSON valido o contiene valori non ammessi");
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroreResponse parametroNonValido(MethodArgumentTypeMismatchException e) {
+        return new ErroreResponse(400, "Valore non valido per il parametro " + e.getName());
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroreResponse parametroMancante(MissingServletRequestParameterException e) {
+        return new ErroreResponse(400, "Parametro obbligatorio mancante: " + e.getParameterName());
     }
 }
