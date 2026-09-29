@@ -1,11 +1,9 @@
 package com.michaeldamico.gestionale.service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.michaeldamico.gestionale.dto.SessioneRequest;
 import com.michaeldamico.gestionale.entity.Allenatore;
 import com.michaeldamico.gestionale.entity.Categoria;
 import com.michaeldamico.gestionale.entity.Sessione;
@@ -28,15 +26,17 @@ public class SessioneService {
     }
 
     @Transactional
-    public Sessione crea(LocalDate data, LocalTime ora, TipoSessione tipo,
-                         Categoria categoria, Integer capienza, Long allenatoreId) {
+    public Sessione crea(SessioneRequest request) {
         Allenatore allenatore = null;
-        if (allenatoreId != null) {
-            allenatore = allenatoreRepository.findById(allenatoreId)
-                    .orElseThrow(() -> new RisorsaNonTrovataException("Allenatore " + allenatoreId + " non trovato"));
+        if (request.allenatoreId() != null) {
+            allenatore = allenatoreRepository.findById(request.allenatoreId())
+                    .orElseThrow(() -> new RisorsaNonTrovataException("Allenatore " + request.allenatoreId() + " non trovato"));
         }
 
-        if (tipo == TipoSessione.INDIVIDUALE) {
+        Categoria categoria = request.categoria();
+        Integer capienza = request.capienza();
+
+        if (request.tipo() == TipoSessione.INDIVIDUALE) {
             capienza = 1;
             categoria = null;
         } else {
@@ -48,6 +48,7 @@ public class SessioneService {
             }
         }
 
-        return sessioneRepository.save(new Sessione(data, ora, tipo, categoria, capienza, allenatore));
+        return sessioneRepository.save(new Sessione(request.data(), request.ora(), request.tipo(),
+                categoria, capienza, allenatore));
     }
 }
