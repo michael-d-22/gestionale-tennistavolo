@@ -81,7 +81,25 @@ Codici di risposta: `201` creazione, `400` dati non validi, `404` risorsa inesis
 .\mvnw test
 ```
 
-## Come avviarlo in locale
+## Avvio con Docker
+Serve [Docker Desktop](https://www.docker.com/products/docker-desktop/) (o Docker con il plugin Compose).
+1. Clonare il repository ed entrare nella cartella
+2. Copiare il file di esempio e scegliere una password per il database:
+   - Windows: `Copy-Item .env.example .env`
+   - macOS/Linux: `cp .env.example .env`
+
+   poi aprire `.env` e sostituire il valore di `DB_PASSWORD`. Il file è escluso da Git e non va mai committato.
+3. Avviare app e database:
+   ```
+   docker compose up --build
+   ```
+4. Aprire `http://localhost:8080` (la porta 8080 deve essere libera)
+
+Il primo avvio scarica le immagini e compila il progetto, quindi richiede qualche minuto. Il database parte vuoto e Hibernate crea le tabelle. I dati restano nel volume Docker anche dopo `docker compose down`; per ripartire da zero si usa `docker compose down -v`.
+
+L'immagine non contiene credenziali: la password arriva dal file `.env` come variabile d'ambiente.
+
+## Come avviarlo in locale (senza Docker)
 1. Clonare il repository ed entrare nella cartella
 2. Installare JDK 25 e MySQL 8.4 (Maven non serve: il progetto include il Maven Wrapper `mvnw`)
 3. Creare il database `gestionale_tennistavolo` e un utente dedicato con permessi solo su quel database
