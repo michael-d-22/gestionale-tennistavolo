@@ -1,0 +1,8 @@
+target
+.git
+.claude
+CLAUDE.md
+CLAUDE.local.md
+ROADMAP.md
+**/application-local.properties
+.env
